@@ -4,7 +4,11 @@ const cors = require('cors');
 const app = express();
 
 // Global Middleware
-app.use(cors());
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || 'https://service-worker-bl7u.onrender.com',
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json()); // Parses incoming JSON payloads
 app.use(express.urlencoded({ extended: true })); 
 
